@@ -9,7 +9,20 @@ import {
   FormControl,
   Select,
 } from "@material-ui/core";
+import PlaceDetails from "../PlaceDetails/PlaceDetails";
 import useStyles from "./styles";
+
+const places = [
+  { name: "Cool Place" },
+  { name: "Another place" },
+  { name: "yet another place" },
+  { name: "Cool Place" },
+  { name: "Another place" },
+  { name: "yet another place" },
+  { name: "Cool Place" },
+  { name: "Another place" },
+  { name: "yet another place" },
+];
 
 export default function List() {
   const classes = useStyles();
@@ -38,6 +51,13 @@ export default function List() {
           <MenuItem value={4.5}>Above 4.5</MenuItem>
         </Select>
       </FormControl>
+      <Grid container spacing={3} className={classes.list}>
+        {places?.map((place, index) => (
+          <Grid item key={index} xs={12}>
+            <PlaceDetails place={place} />
+          </Grid>
+        ))}
+      </Grid>
     </div>
   );
 }
