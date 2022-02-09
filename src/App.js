@@ -34,7 +34,7 @@ export default function App() {
   }, [rating]);
 
   useEffect(() => {
-    if (bounds) {
+    if (bounds.sw && bounds.ne) {
       setLoading(true);
       getPlacesData(type, bounds.sw, bounds.ne).then((data) => {
         setPlaces(data?.filter((place) => place.name && place.num_reviews > 0));
@@ -42,7 +42,7 @@ export default function App() {
         setLoading(false);
       });
     }
-  }, [coordinates, bounds, type]);
+  }, [bounds, type]);
 
   return (
     <>
