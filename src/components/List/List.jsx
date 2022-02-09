@@ -12,19 +12,7 @@ import {
 import PlaceDetails from "../PlaceDetails/PlaceDetails";
 import useStyles from "./styles";
 
-const places = [
-  { name: "Cool Place" },
-  { name: "Another place" },
-  { name: "yet another place" },
-  { name: "Cool Place" },
-  { name: "Another place" },
-  { name: "yet another place" },
-  { name: "Cool Place" },
-  { name: "Another place" },
-  { name: "yet another place" },
-];
-
-export default function List() {
+export default function List({ places }) {
   const classes = useStyles();
   const [type, setType] = useState("restaurants");
   const [rating, setRating] = useState("");
