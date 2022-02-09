@@ -8,7 +8,7 @@ import { Rating } from "@material-ui/lab";
 import LocationOnOutlinedIcon from "@material-ui/icons/LocationOnOutlined";
 
 import useStyles from "./styles";
-import mapStyles from "./mapStyles";
+import { mapStyles } from "./mapStyles";
 
 export default function Map({
   setCoordinates,
