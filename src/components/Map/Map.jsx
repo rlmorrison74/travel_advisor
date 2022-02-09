@@ -10,9 +10,10 @@ export default function Map({
   setBounds,
   coordinates,
   places,
+  setChildClicked,
 }) {
   const classes = useStyles();
-  const isMobile = useMediaQuery("(min-width: 600px)");
+  const isDesktop = useMediaQuery("(min-width: 600px)");
 
   return (
     <div className={classes.mapContainer}>
@@ -27,7 +28,9 @@ export default function Map({
           setCoordinates({ lat: e.center.lat, lng: e.center.lng });
           setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
         }}
-        onChildClick={""}
+        onChildClick={(child) => {
+          setChildClicked(child);
+        }}
       >
         {places?.map((place, index) => (
           <div
@@ -36,7 +39,7 @@ export default function Map({
             lng={Number(place.longitude)}
             key={index}
           >
-            {isMobile ? (
+            {!isDesktop ? (
               <LocationOnOutlinedIcon color="primary" fontSize="large" />
             ) : (
               <Paper elevation={3} className={classes.paper}>
@@ -56,6 +59,7 @@ export default function Map({
                   }
                   alt={place.name}
                 />
+                <Rating size="small" value={Number(place.rating)} readOnly />
               </Paper>
             )}
           </div>
